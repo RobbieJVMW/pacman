@@ -1,3 +1,5 @@
+// Lets work out where we are running and log it. 
+
 var http = require('http');
 var https = require('https');
 var express = require('express');

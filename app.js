@@ -12,6 +12,9 @@ var highscores = require('./routes/highscores');
 var user = require('./routes/user');
 var loc = require('./routes/location');
 
+// TODO
+// Should we also have a health check route? 
+
 // App
 var app = express();
 
@@ -50,10 +53,16 @@ app.use(function(err, req, res, next) {
 Database.connect(app, function(err) {
     if (err) {
         console.log('Failed to connect to database server');
+        process.exit(1);        // TODO - Should we exit here?
     } else {
         console.log('Connected to database server successfully');
     }
 
 });
+
+process.on('SIGTERM', signal => {
+    console.log(`Process ${process.pid} received a SIGTERM signal`)
+    process.exit(0)
+  })
 
 module.exports = app;
