@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:17.12.0
 
 LABEL org.opencontainers.image.authors="rjerrom@vmware.com"
 
